@@ -6,7 +6,7 @@ class Tugasakhir extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Tugasakhir_model');
-        //$this->load->library('form_validation');
+        $this->load->library('form_validation');
     }
     public function tambah()
 	{
@@ -16,8 +16,7 @@ class Tugasakhir extends CI_Controller
 		$this->load->view('tambahdata/index');
 		$this->load->view('template/footer');
 		
-
-		
+	
 		
 	}
 	public function index()
@@ -33,8 +32,23 @@ class Tugasakhir extends CI_Controller
 		$this->Tugasakhir_model->hapusData($id);
 		redirect('tugasakhir');
 	}
+	public function ubah($id)
+	{
+		$data['tugasakhir'] = $this->Tugasakhir_model->dapatkanId($id);
 
-	
+		 $this->form_validation->set_rules('Judul', 'JUDUL', 'required');
+
+		 if($this->form_validation->run() == false ) {
+		 	$this->load->view('template/header');
+		 	$this->load->view('ubahdata/index', $data);
+		 	$this->load->view('template/footer', $data);
+		 } else {
+		 	$this->Tugasakhir_model->ubahData();
+		 	$this->session->set_flashdata('flash', 'Diubah');
+		 	redirect('tugasakhir');
+		 }
+	}
+
 }
 
 

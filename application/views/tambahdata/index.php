@@ -5,7 +5,7 @@
 
 <form action="" method="post">
  <label for="Judul">Masukkan Judul</label>
-    <input type="text" name="Judul" class="form-control" id="Judul" required="Harus Diisi">
+    <input type="text" name="Judul" class="form-control" id="Judul">
 
    
    <label for="Penulis">Masukkan Penulis</label>
@@ -15,7 +15,7 @@
     <input type="number" min="1000" max="2999" name="Tahun" class="form-control" id="Tahun"> 
 
   	<label for="Id_Pembimbing">Masukkan Id_Pembimbing</label>
-    <input type="text" name="Id_Pembimbing" class="form-control" id="Id_Pembimbing" required="Harus Diisi">
+    <input type="text" name="Id_Pembimbing" class="form-control" id="Id_Pembimbing" maxlength="5">
 
       <label for="Abstract">Masukkan Abstract</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Abstract" id="Abstract"></textarea>
