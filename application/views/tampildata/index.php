@@ -1,5 +1,6 @@
-<div class="container">
-  <table class="table mt-5">
+<div class="container mt-1">
+  <a href="<?= base_url(); ?>tugasakhir/tambah/"><button class="btn btn-outline-primary">Tambah Data TA</button></a>
+  <table class="table mt-1">
     <thead class="thead-dark">
       <tr>
         <th scope="col">ID</th>
@@ -8,7 +9,8 @@
         <th scope="col">Tahun</th>
         <th scope="col">ID Pembimbing</th>
         <th scope="col">Abstract</th>
-          <th scope="col">Nama File</th>
+        <th scope="col">Nama File</th>
+        <th scope="col">Aksi</th>
       </tr>
     </thead>
     <tbody>
@@ -20,14 +22,16 @@
         <td><?= $ta['Tahun']; ?></td>
         <td><?= $ta['Id_Pembimbing']; ?></td>
         <td>
-        <?= $ta['Abstract']; ?>
+       Abstract
         <!-- <?php
-$kalimat = "Belajar PHP di Duniailkom";
+$kalimat = "Belajar PHP";
 $sub_kalimat = substr($kalimat,8,3);
 echo $sub_kalimat;
 // PHP
 ?> --></td>
         <td><?= $ta['Nama_file']; ?></td>
+        <td><a href="<?= base_url(); ?>tugasakhir/hapus/<?= $ta['Id_ta']; ?>"
+                        class="badge badge-danger float-right tombol-hapus" onclick="return confirm ('Yakin Hapus Data ?');">hapus</a></td>
       </tr>
     <?php endforeach; ?>
     </tbody>
