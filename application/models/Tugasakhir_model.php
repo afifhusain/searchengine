@@ -2,6 +2,12 @@
 
 class Tugasakhir_model extends CI_model{
 
+	public function tampil()
+	{
+		 return $this->db->get('tugas_akhir')->result_array();
+	}
+
+	
 	public function tambahData()
 	{
 		$data = [
@@ -15,10 +21,6 @@ class Tugasakhir_model extends CI_model{
 
 	$this->db->insert('tugas_akhir', $data);
 
-	}
-	public function tampil()
-	{
-		 return $this->db->get('tugas_akhir')->result_array();
 	}
 
 	public function hapusData($id)
@@ -45,6 +47,20 @@ class Tugasakhir_model extends CI_model{
         $this->db->update('tugas_akhir', $data);
 	}
 	
+	public function cariData()
+	{
+		$keyword = $this->input->post('keyword', true);
+		$this->db->like('Judul', $keyword);
+		$this->db->or_like('Penulis', $keyword);
+		$this->db->or_like('Tahun', $keyword);
+		$this->db->like('Id_Pembimbing', $keyword);
+		$this->db->or_like('Abstract', $keyword);
+		$this->db->or_like('Nama_file', $keyword);
+		
+		
+		return $this->db->get('tugas_akhir')->result_array();
+	}
+
 
 }
 

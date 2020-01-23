@@ -6,10 +6,12 @@
 <form action="" method="post">
  <label for="Judul">Masukkan Judul</label>
     <input type="text" name="Judul" class="form-control" id="Judul">
+    <small class="form-text text-danger"><?= form_error('Judul'); ?></small>
 
    
    <label for="Penulis">Masukkan Penulis</label>
     <input type="text" name="Penulis" class="form-control" id="Penulis">
+    <small class="form-text text-danger"><?= form_error('Penulis'); ?></small>
 
     <label for="Tahun">Masukkan Tahun</label>
     <input type="number" min="1000" max="2999" name="Tahun" class="form-control" id="Tahun"> 

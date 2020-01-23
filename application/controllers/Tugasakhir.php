@@ -10,19 +10,30 @@ class Tugasakhir extends CI_Controller
     }
     public function tambah()
 	{
+		 $this->form_validation->set_rules('Judul', 'JUDUL', 'required');
+		  $this->form_validation->set_rules('Penulis', 'PENULIS', 'required');
+
+	 if($this->form_validation->run() == false ) {
 		
-		$this->Tugasakhir_model->tambahData();
 		$this->load->view('template/header');
 		$this->load->view('tambahdata/index');
 		$this->load->view('template/footer');
-		
+	 } else {
+		$this->Tugasakhir_model->tambahData();
+		 $this->session->set_flashdata('flash', 'Ditambahkan');
+		 redirect('tugasakhir');
+	 }
 	
-		
 	}
 	public function index()
 	{
 		$data['tugasakhir'] = $this->Tugasakhir_model->tampil();
-		$this->load->view('template/header');
+
+		if ( $this->input->post('keyword') ) {
+			$data['tugasakhir'] = $this->Tugasakhir_model->cariData();
+		}
+
+		$this->load->view('template/header', $data);
 		$this->load->view('tampildata/index', $data);
 		$this->load->view('template/footer');
 		
